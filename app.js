@@ -16,7 +16,7 @@ const productRouter = require("./api/routers/productRouter");
 
 // database connection
 mongoose
-  .connect(process.env.MONGO_CONNECTION_STRING, {
+  .connect(`mongodb+srv://productCrud:0CQve2jZzSVMq174@cluster0.vsbhbi4.mongodb.net/productCrud?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
