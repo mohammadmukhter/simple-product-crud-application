@@ -25,6 +25,13 @@ const updateProduct = async (req, res, next)=> {
     res.status(200).json(result);
 }
 
+// product delete controller
+const deleteProduct = async (req, res, next)=> {
+    const productId = req.params.id;
+    const deletedData = await Product.deleteOne({_id: productId});
+    res.status(200).json({deletedData});
+}
+
 
 // all product data or by category data get controller
 const products = async (req, res, next)=> {
@@ -43,5 +50,6 @@ const products = async (req, res, next)=> {
 module.exports = {
     products,
     addProduct,
-    updateProduct
+    updateProduct,
+    deleteProduct
 }
