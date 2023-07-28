@@ -9,7 +9,7 @@ const addProduct = async(req, res, next)=> {
     const dataInserted = await newData.save();
     console.log(dataInserted);
     
-    res.status(200).json(dataInserted);
+    res.status(200).json({DataInserted: true, dataInserted});
 }
 
 
@@ -22,14 +22,14 @@ const updateProduct = async (req, res, next)=> {
     console.log(productId, updateData);
     const result = await Product.updateOne({ _id: productId }, updateData);
 
-    res.status(200).json(result);
+    res.status(200).json({dataUpdated: true, result});
 }
 
 // product delete controller
 const deleteProduct = async (req, res, next)=> {
     const productId = req.params.id;
     const deletedData = await Product.deleteOne({_id: productId});
-    res.status(200).json({deletedData});
+    res.status(200).json({dataDeleted: true, deletedData});
 }
 
 
