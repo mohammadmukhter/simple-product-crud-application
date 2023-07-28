@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 // all internal imports
-const {products} = require('./../controllers/prodcutController');
+const {products} = require('../controllers/productController');
 
 
 // all the product get router
