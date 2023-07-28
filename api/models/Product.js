@@ -5,10 +5,12 @@ const productSchema = mongoose.Schema(
         productName: {
             type: String,
             required: true,
+            lowercase: true,
         },
         categoryName: {
             type: String,
             required: true,
+            lowercase: true,
         },
         quantity: {
             type: Number,

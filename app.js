@@ -8,6 +8,8 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 dotEnv.config();
 
+// request parser
+app.use(express.json());
 
 // internal imports
 const productRouter = require("./api/routers/productRouter");
