@@ -1,12 +1,15 @@
 const express = require('express');
 const app = express();
-
+const cors= require('cors');
 const port = process.env.PORT || 3000;
 
+app.use(cors());
 
-app.get('/', (req, res)=> {
-    res.json({message: 'server connected...'})
-});
+
+// internal imports
+const productRouter = require("./api/routers/productRouter");
+
+app.use('/products', productRouter);
 
 app.listen(port, ()=> {
     console.log(`server connected to the port: ${port}`);
