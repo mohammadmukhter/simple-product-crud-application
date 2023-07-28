@@ -13,6 +13,19 @@ const addProduct = async(req, res, next)=> {
 }
 
 
+// product update controller
+const updateProduct = async (req, res, next)=> {
+    const updateData = req.body;
+    const productId = req.params.id;
+    console.log('hello')
+
+    console.log(productId, updateData);
+    const result = await Product.updateOne({ _id: productId }, updateData);
+
+    res.status(200).json(result);
+}
+
+
 // all product data or by category data get controller
 const products = async (req, res, next)=> {
     const queryParameter = req.query.categoryName;
@@ -30,4 +43,5 @@ const products = async (req, res, next)=> {
 module.exports = {
     products,
     addProduct,
+    updateProduct
 }
