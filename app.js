@@ -13,6 +13,7 @@ app.use(express.json());
 
 // internal imports
 const productRouter = require("./api/routers/productRouter");
+const categoryRouter = require("./api/routers/categoryRouter");
 
 // database connection
 mongoose
@@ -24,9 +25,14 @@ mongoose
   .catch((err) => console.log(err));
 
 
+// category api
+app.use("/categories", categoryRouter)
+
 // product api
 app.use('/products', productRouter);
 
+
+// listener
 app.listen(port, ()=> {
     console.log(`server connected to the port: ${port}`);
 })
