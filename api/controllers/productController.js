@@ -1,4 +1,5 @@
 const Product = require('./../models/Product');
+const mongoose = require('mongoose');
 
 
 // product insert to database
@@ -35,15 +36,17 @@ const deleteProduct = async (req, res, next)=> {
 
 // all product data or by category data get controller
 const products = async (req, res, next)=> {
-    const queryParameter = req.query.categoryName;
-    
+    const queryParameter = req.query.categoryId;
+   
+    const filter = { categoryId: queryParameter };
+
     let productsData;
     if(queryParameter){
-        productsData =await Product.find({categoryName: queryParameter});
+        productsData =await Product.find(filter).populate('categoryId', "categoryName").lean();
     }else{
-        productsData =await Product.find();
+        productsData =await Product.find().populate('categoryId', "categoryName");
     }
-
+ 
     res.status(200).json(productsData);
 }
 

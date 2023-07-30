@@ -7,10 +7,10 @@ const productSchema = mongoose.Schema(
             required: true,
             lowercase: true,
         },
-        categoryName: {
-            type: String,
+        categoryId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Category",
             required: true,
-            lowercase: true,
         },
         quantity: {
             type: Number,
